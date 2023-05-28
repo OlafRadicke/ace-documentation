@@ -16,4 +16,25 @@
 		<p><i class="fa fa-heart fa-4x"></i></p>
 	{{ end }}
 
+    <h1>Schlagwortverzeichnis</h1>
+
+    <section>
+		<ul>
+			{{ range $taxonomyname, $taxonomy := .Site.Taxonomies }}
+				<li><a href="{{ "/" | relLangURL}}{{ $taxonomyname | urlize }}">{{ $taxonomyname }}</a>
+					<ul>
+						{{ range $key, $value := $taxonomy }}
+						<li> {{ $key }} </li>
+									<ul>
+									{{ range $value.Pages }}
+											<li hugo-nav="{{ .RelPermalink}}"><a href="{{ .Permalink}}"> {{ .LinkTitle }} </a> </li>
+									{{ end }}
+									</ul>
+						{{ end }}
+					</ul>
+				</li>
+			{{ end }}
+		</ul>
+    </section>
+
 {{ end }}
