@@ -26,9 +26,4 @@
       <link rel="stylesheet" href="{{ $.Site.BaseURL }}{{ . }}">
     {{ end }}
 
-    <!-- Only include the tracking when using `hugo` or adding `--environment production` -->
-    {{ if eq hugo.Environment "production" }}
-        {{ template "_internal/google_analytics_async.html" . }}
-    {{ end }}
-
 </head>
